@@ -19,5 +19,13 @@ function createBoard() {
   }
   return { getBoard };
 }
-
+const gameBoard = (function () {
+  let turn = 0;
+  function getTurn() {
+    turn++;
+    return turn % 2;
+  }
+  return { getTurn };
+})();
 let board = createBoard();
+console.log(gameBoard.getTurn());
