@@ -1,3 +1,24 @@
 body {
-  background-color: cadetblue;
+  font-family: monospace;
+}
+.grid {
+  display: grid;
+}
+.flex {
+  display: flex;
+}
+#main {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#board {
+  gap: 20px;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.cell {
+  background-color: bisque;
+  width: 25vh;
+  height: 25vh;
 }
