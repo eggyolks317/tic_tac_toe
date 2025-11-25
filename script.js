@@ -5,16 +5,19 @@ function createUser(name) {
 
 function createBoard() {
   let board = [
-    [, ,],
-    [, ,],
-    [, ,],
+    [-1, -1, -1],
+    [-1, -1, -1],
+    [-1, -1, -1],
   ];
   for (let i = 0; i < 9; i++) {
     let cell = document.createElement("div");
     cell.classList.add("cell");
     displayBoard.appendChild(cell);
   }
-  return { board };
+  function getBoard() {
+    return board;
+  }
+  return { getBoard };
 }
 
 let board = createBoard();
