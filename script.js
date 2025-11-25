@@ -60,6 +60,20 @@ const gameBoard = (function () {
         count = 0;
       }
     }
+
+    //check vertical
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (board[j][i] == sign) {
+          count++;
+        }
+      }
+      if (count == 3) {
+        return true;
+      } else {
+        count = 0;
+      }
+    }
   }
   return { getTurn, checkWin };
 })();
