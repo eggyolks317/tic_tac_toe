@@ -21,7 +21,7 @@ function createBoard() {
           cell.textContent = "x";
           board[Math.trunc(i / 3)][i % 3] = "x";
         }
-        console.log(board);
+        console.log(gameBoard.checkWin(board));
         cell.classList.add("clicked");
       }
     });
@@ -39,8 +39,29 @@ const gameBoard = (function () {
     turn++;
     return turn % 2;
   }
-  return { getTurn };
+  function checkWin(board) {
+    let count = 0;
+    let sign = -1;
+    if (turn % 2) {
+      sign = "o";
+    } else {
+      sign = "x";
+    }
+    //check horizontal
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (board[i][j] == sign) {
+          count++;
+        }
+      }
+      if (count == 3) {
+        return true;
+      } else {
+        count = 0;
+      }
+    }
+  }
+  return { getTurn, checkWin };
 })();
 //global code
 let board = createBoard();
-console.log(gameBoard.getTurn());
