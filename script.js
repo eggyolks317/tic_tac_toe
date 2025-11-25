@@ -1,4 +1,5 @@
 let displayBoard = document.getElementById("board");
+let displayStatus = document.getElementById("status");
 function createUser(name) {
   return { name };
 }
@@ -18,11 +19,17 @@ function createBoard() {
         if (gameBoard.getTurn()) {
           cell.textContent = "o";
           board[Math.trunc(i / 3)][i % 3] = "o";
+          if (gameBoard.checkWin(board)) {
+            displayStatus.textContent += " o wins!";
+          }
         } else {
           cell.textContent = "x";
           board[Math.trunc(i / 3)][i % 3] = "x";
+          if (gameBoard.checkWin(board)) {
+            displayStatus.textContent += " x wins!";
+          }
         }
-        console.log(gameBoard.checkWin(board));
+
         cell.classList.add("clicked");
       }
     });
