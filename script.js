@@ -2,14 +2,11 @@ function createUser(name) {
   return { name };
 }
 
-function createBoard(board) {
+function createBoard() {
+  let board = [
+    [, , ,],
+    [, , ,],
+    [, , ,],
+  ];
   return { board };
 }
-
-console.log(
-  createBoard([
-    [, , ,],
-    [, , ,],
-    [, , ,],
-  ])
-);
