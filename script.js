@@ -43,7 +43,7 @@ const gameBoard = (function () {
   }
   function checkWin(board) {
     let count = 0;
-    let sign = -1;
+    let sign;
     if (turn % 2) {
       sign = "o";
     } else {
@@ -57,6 +57,8 @@ const gameBoard = (function () {
         }
       }
       if (count == 3) {
+        console.log("win by horizontal at " + i);
+        console.log(board);
         return true;
       } else {
         count = 0;
@@ -71,11 +73,14 @@ const gameBoard = (function () {
         }
       }
       if (count == 3) {
+        console.log("win by vertical");
+        console.log(board);
         return true;
       } else {
         count = 0;
       }
     }
+
     //check diagonal
     for (let i = 0; i < 3; i++) {
       if (board[i][i] == sign) {
@@ -83,23 +88,28 @@ const gameBoard = (function () {
       }
     }
     if (count == 3) {
+      console.log("win by left to right diagonal");
+      console.log(board);
       return true;
     } else {
       count = 0;
     }
 
-    for (let i = 2; i >= 0; i--) {
-      for (let j = 0; j < 3; j++) {
-        if (board[i][j] == sign) {
-          count++;
-        }
+    for (let j = 0; j < 3; j++) {
+      if (board[j][Math.abs(j - 2)] == sign) {
+        count++;
       }
     }
+
     if (count == 3) {
+      console.log("win by right to left diagonal");
+      console.log(board);
       return true;
     } else {
       count = 0;
     }
+
+    return false;
   }
   return { getTurn, checkWin };
 })();
