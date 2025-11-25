@@ -14,9 +14,14 @@ function createBoard() {
     cell.classList.add("cell", "flex");
     cell.addEventListener("click", (e) => {
       if (!cell.classList.contains("clicked")) {
-        gameBoard.getTurn()
-          ? (cell.textContent = "o")
-          : (cell.textContent = "x");
+        if (gameBoard.getTurn()) {
+          cell.textContent = "o";
+          board[Math.trunc(i / 3)][i % 3] = "o";
+        } else {
+          cell.textContent = "x";
+          board[Math.trunc(i / 3)][i % 3] = "x";
+        }
+        console.log(board);
         cell.classList.add("clicked");
       }
     });
