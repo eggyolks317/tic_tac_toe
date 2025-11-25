@@ -9,6 +9,7 @@ function createBoard() {
     [-1, -1, -1],
     [-1, -1, -1],
   ];
+  //add visualization and event listeners
   for (let i = 0; i < 9; i++) {
     let cell = document.createElement("div");
     cell.classList.add("cell", "flex");
@@ -27,6 +28,7 @@ function createBoard() {
     });
     displayBoard.appendChild(cell);
   }
+  //make board private
   function getBoard() {
     return board;
   }
