@@ -74,6 +74,30 @@ const gameBoard = (function () {
         count = 0;
       }
     }
+    //check diagonal
+    for (let i = 0; i < 3; i++) {
+      if (board[i][i] == sign) {
+        count++;
+      }
+    }
+    if (count == 3) {
+      return true;
+    } else {
+      count = 0;
+    }
+
+    for (let i = 2; i >= 0; i--) {
+      for (let j = 0; j < 3; j++) {
+        if (board[i][j] == sign) {
+          count++;
+        }
+      }
+    }
+    if (count == 3) {
+      return true;
+    } else {
+      count = 0;
+    }
   }
   return { getTurn, checkWin };
 })();
