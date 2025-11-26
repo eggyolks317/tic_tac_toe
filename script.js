@@ -59,10 +59,6 @@ const gameBoard = (function () {
   function checkWin(board) {
     let count = 0;
     let sign;
-    if (turn == 9) {
-      displayStatus.textContent += " draw!";
-      return false;
-    }
     if (turn % 2) {
       sign = "o";
     } else {
@@ -128,6 +124,10 @@ const gameBoard = (function () {
       count = 0;
     }
 
+    if (turn == 9) {
+      displayStatus.textContent += " draw!";
+      return false;
+    }
     return false;
   }
   return { getTurn, checkWin };
