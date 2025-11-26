@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #ffc95e;
+  --shadow-color: #deaf52;
+}
 body {
   font-family: monospace;
 }
@@ -11,25 +15,38 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
 }
 #board {
   gap: 20px;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
-
+h1 {
+  margin: 0;
+}
+#bottom_section {
+  width: calc(23vh * 3 + 30px);
+  justify-content: space-evenly;
+}
 .cell {
   justify-content: center;
   align-items: center;
-  font-size: 25vh;
-  background-color: bisque;
-  width: 25vh;
-  height: 25vh;
+  font-size: 23vh;
+  background-color: var(--primary-color);
+  width: 23vh;
+  height: 23vh;
 }
 .cell:hover {
-  background-color: rgb(229, 205, 176);
+  background-color: var(--shadow-color);
 }
 
 .clicked:hover {
-  background-color: bisque;
+  background-color: var(--primary-color);
+}
+button {
+  font-family: monospace;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 10px;
+  border: 0;
 }

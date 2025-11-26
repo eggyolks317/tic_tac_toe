@@ -1,5 +1,6 @@
 let displayBoard = document.getElementById("board");
 let displayStatus = document.getElementById("status");
+let startBtn = document.getElementById("start_btn");
 function createUser(name) {
   return { name };
 }
@@ -57,6 +58,7 @@ const gameBoard = (function () {
     return turn % 2;
   }
   function checkWin(board) {
+    console.log(turn);
     let count = 0;
     let sign;
     if (turn % 2) {
@@ -130,7 +132,17 @@ const gameBoard = (function () {
     }
     return false;
   }
-  return { getTurn, checkWin };
+  function resetBoard(board) {
+    displayStatus.textContent = "STATUS:";
+    while (displayBoard.lastChild) {
+      displayBoard.removeChild(displayBoard.lastChild);
+    }
+    turn = 0;
+  }
+  return { getTurn, checkWin, resetBoard };
 })();
 //global code
-let board = createBoard();
+startBtn.addEventListener("click", (e) => {
+  gameBoard.resetBoard();
+  createBoard();
+});
