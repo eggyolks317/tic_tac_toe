@@ -4,6 +4,7 @@
 }
 body {
   font-family: monospace;
+  padding: 30px;
 }
 .grid {
   display: grid;
@@ -31,7 +32,9 @@ h1 {
 .cell {
   justify-content: center;
   align-items: center;
-  font-size: 23vh;
+  font-size: 15vh;
+  color: white;
+  font-weight: 50;
   background-color: var(--primary-color);
   width: 23vh;
   height: 23vh;
@@ -49,4 +52,34 @@ button {
   border-radius: 5px;
   padding: 10px;
   border: 0;
+}
+input {
+  border: 1px solid var(--shadow-color);
+  font-family: monospace;
+  border-radius: 5px;
+  padding: 10px;
+}
+input:focus {
+  outline: 1px solid var(--primary-color);
+}
+dialog {
+  padding: 25px;
+  border: 0;
+  border-radius: 1vw;
+  width: 60vh;
+}
+.name_section {
+  justify-content: space-around;
+  align-items: center;
+}
+form {
+  flex-direction: column;
+  gap: 20px;
+}
+#submit {
+  align-self: center;
+  width: 25vw;
+}
+button:hover {
+  cursor: pointer;
 }

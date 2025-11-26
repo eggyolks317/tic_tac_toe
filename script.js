@@ -1,6 +1,12 @@
 let displayBoard = document.getElementById("board");
 let displayStatus = document.getElementById("status");
 let startBtn = document.getElementById("start_btn");
+let dialog = document.getElementById("dialog");
+let submitBtn = document.getElementById("submit");
+let name1 = document.getElementById("name1");
+let name2 = document.getElementById("name2");
+let user1;
+let user2;
 function createUser(name) {
   return { name };
 }
@@ -21,7 +27,7 @@ function createBoard() {
           cell.textContent = "o";
           board[Math.trunc(i / 3)][i % 3] = "o";
           if (gameBoard.checkWin(board)) {
-            displayStatus.textContent += " o wins!";
+            displayStatus.textContent = "STATUS: " + user1.name + " wins!";
             let cells = document.querySelectorAll(".cell");
             cells.forEach((c) => {
               c.classList.add("clicked");
@@ -31,11 +37,13 @@ function createBoard() {
           cell.textContent = "x";
           board[Math.trunc(i / 3)][i % 3] = "x";
           if (gameBoard.checkWin(board)) {
-            displayStatus.textContent += " x wins!";
+            displayStatus.textContent = "STATUS: " + user2.name + " wins!";
             let cells = document.querySelectorAll(".cell");
             cells.forEach((c) => {
               c.classList.add("clicked");
             });
+          } else {
+            displayStatus.textContent = "STATUS: " + user1.name + "'s turn";
           }
         }
 
@@ -127,8 +135,12 @@ const gameBoard = (function () {
     }
 
     if (turn == 9) {
-      displayStatus.textContent += " draw!";
+      displayStatus.textContent = "STATUS: draw!";
       return false;
+    } else {
+      if (turn % 2) {
+        displayStatus.textContent = "STATUS: " + user2.name + "'s turn";
+      }
     }
     return false;
   }
@@ -144,5 +156,12 @@ const gameBoard = (function () {
 //global code
 startBtn.addEventListener("click", (e) => {
   gameBoard.resetBoard();
+  dialog.showModal();
   createBoard();
+});
+
+submitBtn.addEventListener("click", (e) => {
+  user1 = createUser(name1.value);
+  user2 = createUser(name2.value);
+  displayStatus.textContent = "STATUS: " + user1.name + "'s turn";
 });
