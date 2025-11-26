@@ -21,12 +21,20 @@ function createBoard() {
           board[Math.trunc(i / 3)][i % 3] = "o";
           if (gameBoard.checkWin(board)) {
             displayStatus.textContent += " o wins!";
+            let cells = document.querySelectorAll(".cell");
+            cells.forEach((c) => {
+              c.classList.add("clicked");
+            });
           }
         } else {
           cell.textContent = "x";
           board[Math.trunc(i / 3)][i % 3] = "x";
           if (gameBoard.checkWin(board)) {
             displayStatus.textContent += " x wins!";
+            let cells = document.querySelectorAll(".cell");
+            cells.forEach((c) => {
+              c.classList.add("clicked");
+            });
           }
         }
 
@@ -51,6 +59,10 @@ const gameBoard = (function () {
   function checkWin(board) {
     let count = 0;
     let sign;
+    if (turn == 9) {
+      displayStatus.textContent += " draw!";
+      return false;
+    }
     if (turn % 2) {
       sign = "o";
     } else {
